@@ -1,0 +1,295 @@
+body {
+  max-width: auto;
+}
+.white {
+  color: #ffffff;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* logo */
+.logo {
+  position: absolute;
+  height: 40px;
+  left: 50%;
+  top: calc(50% - 41px / 2 + 4.5px);
+}
+
+.cartLogo {
+  position: absolute;
+  height: 20px;
+  right: 0;
+  cursor: pointer;
+}
+.vectorLogo {
+  position: absolute;
+  height: 3px;
+  right: 0;
+  top: 40%;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: absolute;
+  width: 234px;
+  height: 56px;
+  left: 101px;
+  bottom: 0px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px;
+
+  position: absolute;
+  width: 204px;
+  height: 40px;
+  right: 101px;
+  top: 23px;
+}
+.currencyLabel {
+  position: absolute;
+  right: 48px;
+  height: 29px;
+  padding-left: 10px;
+  padding-right: 16px;
+  cursor: pointer;
+}
+
+header {
+  position: relative;
+  height: 80px;
+  width: 1440px;
+  background: #ffffff;
+  text-align: center;
+  margin: auto;
+}
+
+.headerBtn {
+  position: relative;
+  height: 56px;
+  background-color: white;
+  border-color: white;
+  border-style: hidden;
+  border-bottom: 2px solid #5ece7b;
+}
+
+.labelHeaderBtn {
+  position: relative;
+  height: 52px;
+  top: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  display: block;
+  text-transform: uppercase;
+  color: #5ece7b;
+}
+
+.container {
+  position: relative;
+  width: 1440px;
+  background: #ffffff;
+  text-align: center;
+  margin: auto;
+}
+
+h1 {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 42px;
+  line-height: 160%;
+  text-align: left;
+  padding-left: 101px;
+  margin-top: 80px;
+
+  color: #1d1f22;
+}
+
+.productTile {
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 29px;
+  color: #1d1f22;
+  padding-left: 16px;
+  text-align: left;
+}
+
+.productPrice {
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 29px;
+  text-align: left;
+  padding-left: 16px;
+}
+
+.productImage {
+  height: 330px;
+  width: 354px;
+  padding: 16px 16px 0 16px;
+  max-width: 100%;
+}
+
+.card {
+  list-style: none;
+  height: 444px;
+  width: 386px;
+  /* padding-right: 40px; */
+}
+
+.productsContainer {
+  padding-left: 100px;
+  padding-right: 100px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /* repeat(auto-fit, minmax(386px, 1fr)); */
+  /* max-width: 1311px; */
+  max-width: auto;
+}
+
+/* ///////////////////////// Cart Overlay //////////////////////////////////*/
+
+.cartModal {
+  position: fixed;
+  width: 325px;
+  height: auto;
+  left: 1028px;
+  top: 78px;
+  line-height: 1.4;
+  background-color: white;
+}
+
+.hide {
+  display: none;
+}
+
+.display {
+  position: fixed;
+  top: 78px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(57, 55, 72, 0.22);
+}
+
+.productCart {
+  display: grid;
+  grid-template-columns: 136px 52px 105px;
+  height: 137px;
+  width: 293px;
+  padding-left: 16px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.productTileCart {
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 29px;
+  color: #1d1f22;
+  text-align: left;
+  position: relative;
+  height: 52px;
+  width: 136px;
+}
+
+.productPriceCart {
+  font-family: Raleway;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 29px;
+  text-align: left;
+  position: relative;
+  padding-top: 5px;
+}
+
+.productCartImg {
+  height: 137px;
+  width: 105px;
+}
+
+.rectangle {
+  text-align: center;
+  height: 24px;
+  width: 24px;
+  border: 1px solid #1d1f22;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.count {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.buttonLabel {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  width: 80px;
+}
+
+.total {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.totalLabel {
+  text-align: left;
+  margin-left: 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+}
+.totalAmount {
+  text-align: right;
+  margin-right: 20px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 160%;
+}
+.viewBagBtn {
+  margin: 35px 12px 20px 13px;
+  width: 140px;
+  height: 43px;
+  background-color: #ffffff;
+  border: 1px solid #1d1f22;
+}
+
+.checkOutBtn {
+  width: 140px;
+  height: 43px;
+  background: #5ece7b;
+  border-style: none;
+}
+
+.cartOverlayTitle {
+  font-family: Raleway;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: left;
+  margin-top: 8px;
+  margin-left: 16px;
+}

@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Header from './components/header';
+import Main from './components/Main';
+import { Provider } from "react-redux";
+import store from "./app/store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false
+    }
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+  }
+
+  showModal = () => {
+    this.setState({
+      show: true
+    })
+    console.log(this.state.show)
+  };
+
+  hideModal = () => {
+    this.setState({
+      show: false
+    })
+  };
+
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <Header />
+          <Main />
+        </div>
+      </Provider>
+    );
+  }
 }
 
 export default App;
