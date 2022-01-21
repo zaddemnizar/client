@@ -27,9 +27,9 @@ class ProductCartOverlay extends Component {
           <div className="count">
             {this.props.counter}
           </div>
-          <div className="rectangle" onClick={() => this.props.decrement()}>
+          <button className="rectangle" onClick={() => this.props.decrement()}>
             -
-          </div>
+          </button>
         </div>
         <div>
           <img src={productCard} className="productCartImg" alt="Product" />

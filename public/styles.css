@@ -227,12 +227,12 @@ h1 {
 }
 
 .rectangle {
+  font-size: 18px;
   text-align: center;
   height: 24px;
   width: 24px;
   border: 1px solid #1d1f22;
-  box-sizing: border-box;
-  margin: auto;
+  background-color: white;
 }
 
 .count {
