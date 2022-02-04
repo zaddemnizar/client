@@ -5,10 +5,7 @@ import ProductCartOverlay from "./ProductCartOverlay";
 // const showHideClassName = this.props.showstate ? "cartModal display" : "cartModal hide" ;
 
 class CartOverlay extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
-  }
+
 
   render() {
     return (

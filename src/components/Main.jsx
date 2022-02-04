@@ -4,13 +4,8 @@ import Card from "./ProductCard";
 
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
-  }
 
-
-  render() { 
+  render() {
     return (
       <div className="container" >
         <div>
@@ -31,5 +26,5 @@ class Main extends Component {
   }
 }
 
- 
+
 export default Main;

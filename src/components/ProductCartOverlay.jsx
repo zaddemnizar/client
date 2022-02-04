@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import productCard from "../productCart.png";
-import { connect } from 'react-redux';
-import {
-  decrement,
-  increment,
-} from '../features/counter/counterSlice';
+
 
 
 class ProductCartOverlay extends Component {
@@ -21,13 +17,13 @@ class ProductCartOverlay extends Component {
           </div>
         </div>
         <div>
-          <button className="rectangle" onClick={() => this.props.increment()}>
+          <button className="rectangle" >
             +
           </button>
           <div className="count">
             {this.props.counter}
           </div>
-          <button className="rectangle" onClick={() => this.props.decrement()}>
+          <button className="rectangle" >
             -
           </button>
         </div>
@@ -39,12 +35,5 @@ class ProductCartOverlay extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  counter: state.counter.value
-});
-const mapDispatchToProps = () => ({
-  increment,
-  decrement,
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductCartOverlay);
+export default ProductCartOverlay;
