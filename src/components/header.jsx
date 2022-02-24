@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Logo from "./logo";
 import Navigation from "./navigation";
-import Actions from "./actions";
+import Actions from "./Actions";
 
 class Header extends Component {
 
@@ -10,7 +10,11 @@ class Header extends Component {
       <header>
         <Navigation />
         <Logo />
-        <Actions oncliked={this.props.oncliked} />
+        <Actions
+          show={this.props.show}
+          items={this.props.items}
+          changeCurrency={this.props.changeCurrency}
+        />
       </header>
     );
   }
