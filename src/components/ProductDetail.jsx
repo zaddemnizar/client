@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import parse from 'html-react-parser';
+import styles from './styles.css';
 
 export default class ProductDetail extends Component {
   constructor(props) {
