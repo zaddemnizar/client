@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Logo from "./logo";
 import Navigation from "./navigation";
-import Actions from "./Actions";
+import Actions from "./actions";
 
 class Header extends Component {
 
