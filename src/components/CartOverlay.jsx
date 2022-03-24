@@ -54,8 +54,8 @@ class CartOverlay extends Component {
     const totalCount = this.productsCount(products);
 
     return (
-      <div className="overlay" onClick={onClose} style={{ display: show ? "block" : "none" }}>
-        <div className="display" style={{ opacity: show ? 1 : 0 }}>
+      <div className={`overlay ${show ? 'show' : 'hide'}`} onClick={onClose} >
+        <div className={`display ${show ? 'opaque' : 'transparent'}`}>
           <div className="modalContent" onClick={e => e.stopPropagation()}>
             <div className="cartOverlayTitle">
               <span className="bold">My Bag, </span>

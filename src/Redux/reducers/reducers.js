@@ -48,7 +48,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         products: newProd
-      };
+      }
     case actions.REMOVE_PRODUCT:
       let newProduct;
       if (action.payload.product.qtty - 1 === 0) {

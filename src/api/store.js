@@ -1,34 +1,45 @@
 import { client } from "./client";
-import { ALL_PRODUCTS } from './queries';
+import { CATEGORY_PRODUCTS, ALL_CURRENCIES, ALL_CATEGORIES, PRODUCT } from './queries';
 
-
-export const fetchData = async () => {
-  let allProducts, clothes, tech;
-  await client.query({ query: ALL_PRODUCTS })
+export const fetchCurrencies = async () => {
+  let currencies;
+  await client.query({ query: ALL_CURRENCIES })
     .then(({ data }) => {
       let finalData = JSON.parse(JSON.stringify(data));
-      finalData = finalData.category.products.map(product => {
-        product.attributes.map(attribute => {
-          attribute.items.map(item => {
-            item.selected = false;
-            return item;
-          })
-          return attribute;
-        })
-        product.sizes = product.attributes;
-        return product;
+      finalData = finalData.currencies.map(currency => {
+        return currency;
       });
-      allProducts = finalData;
-      clothes = finalData.filter(product => {
-        return product.category === "clothes"
-      });
-      tech = finalData.filter(product => {
-        return product.category === "tech"
-      })
+      currencies = finalData;
     })
-  return {
-    allProducts,
-    clothes,
-    tech
-  }
+  return currencies;
+}
+
+export const fetchCategories = async () => {
+  let categories;
+  await client.query({ query: ALL_CATEGORIES })
+    .then(({ data }) => {
+      let finalData = JSON.parse(JSON.stringify(data));
+      finalData = finalData.categories.map(category => {
+        return category;
+      });
+      categories = finalData;
+    })
+  return categories;
+}
+
+export const fetchProduct = async (id) => {
+  let product = await client.query({
+    query: PRODUCT,
+    variables: { id }
+  });
+  return product;
+}
+
+export const fetchProductsCategory = async (category) => {
+  let prods = await client.query({
+    query: CATEGORY_PRODUCTS,
+    variables: { category }
+  });
+
+  return prods;
 }

@@ -2,23 +2,32 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import Header from './components/header';
-import ClothesPLP from "./pages/ClothesPLP";
+import WelcomePage from "./pages/WelcomePage";
 import PDP from "./pages/PDP";
 import PLP from "./pages/PLP";
-import TechPLP from "./pages/TechPLP";
 import CartPage from "./pages/CartPage";
 import { currencyChange } from "./Redux/actions/actions";
 import CartOverlay from "./components/CartOverlay";
+import { fetchCategories } from './api/store';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+      show: false,
+      categories: []
     }
     this.close = this.close.bind(this);
     this.show = this.show.bind(this);
+  }
+
+  async componentDidMount() {
+    const cat = await fetchCategories();
+    this.setState(prev => ({
+      ...prev,
+      categories: cat
+    }));
   }
 
   show() {
@@ -50,10 +59,14 @@ class App extends Component {
           show={this.state.show}
         />
         <Routes>
-          <Route path="/" element={<PLP />} />
-          <Route path="clothes" element={<ClothesPLP />} />
-          <Route path="tech" element={<TechPLP />} />
-          <Route path="product-details/:id" style={{ color: 'inherit', textDecoration: 'inherit' }} element={<PDP />} />
+          {this.state.categories.map((category => (
+            <Route
+              key={category.name}
+              path={category.name}
+              element={<PLP category={category.name} />} />
+          )))}
+          <Route path="*" element={<WelcomePage />} />
+          <Route path="product-details/:id" element={<PDP />} />
           <Route path="cart" element={<CartPage />} />
         </Routes>
       </div>

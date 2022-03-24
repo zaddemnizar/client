@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import right from '../../src/right.svg';
 import left from '../../src/left.svg';
+import { Size } from './Size';
 
 
 export default class CartElement extends Component {
@@ -127,12 +128,12 @@ export default class CartElement extends Component {
     return (
       <>
         {!small && <hr className='line' />}
-        {product && (<div className={`cart ${small && 'small'}`}>
-          <div className={`cartBlock ${small && 'small'}`}>
+        {product && (<div className={`cart ${small ? 'small' : ''}`}>
+          <div className={`cartBlock ${small ? 'small' : ''}`}>
             <div className='cartBlock1'>
-              <h3 className={`cartElementHeader ${small && 'small'}`} > {product.name}</h3>
-              <p className={`cartElementSubHeader ${small && 'hide'}`}>{product.brand}</p>
-              <p className={`cartElementPrice ${small && 'small'}`}><b> {price[0].currency.symbol}{price[0].amount}</b></p>
+              <h3 className={`cartElementHeader ${small ? 'small' : ''}`} > {product.name}</h3>
+              <p className={`cartElementSubHeader ${small ? 'small' : ''}`}>{product.brand}</p>
+              <p className={`cartElementPrice ${small ? 'small' : ''}`}><b> {price[0].currency.symbol}{price[0].amount}</b></p>
               <div >
                 {sizes.length === 0 && <p className='without'>Without attributes</p>}
                 {
@@ -140,17 +141,18 @@ export default class CartElement extends Component {
                   sizes.map(attribute => {
                     return (
                       <div key={Math.random() * 12}>
-                        <h3 className={`attribute ${small && 'small'}`}>{attribute.name !== 'Size' && attribute.name}</h3>
+                        <h3 className={`attribute ${small ? 'small' : ''}`}>{attribute.name !== 'Size' && attribute.name}</h3>
                         <div className='sizesWrapper'>
                           {attribute.items.map(item => (
-                            <div
+                            <Size
                               key={item.value}
-                              style={this.makeStyle(attribute.name, small, item.selected, item.value)}
-                              className={`productSize ${small && 'small'} ${item.selected ? 'size' : ''}`}
-                              onClick={() => this.setSize(attribute.name, item.value, sizes)}
+                              backgroundColor={attribute.name === 'Color' && item.value}
+                              scale={attribute.name === 'Color' && item.selected ? "scale(0.8)" : ""}
+                              className={`productSize ${small ? 'small' : ''} ${item.selected ? 'size' : ''}`}
+                              onClick={() => !small && this.setSize(attribute.name, item.value, sizes)}
                             >
                               {attribute.name !== 'Color' && item.value}
-                            </div>
+                            </Size>
                           ))}
                         </div>
                       </div>
@@ -162,14 +164,14 @@ export default class CartElement extends Component {
             <div className='cartBlock2'>
               <div>
                 <div
-                  className={`rectangleCounter ${small && 'small'}`}
+                  className={`rectangleCounter ${small ? 'small' : ''}`}
                   onClick={() => onAdd(finalProduct)}
                 >
                   +
                 </div>
-                <p className={`counteNumber ${small && 'small'}`}>{qtty}</p>
+                <p className={`counteNumber ${small ? 'small' : ''}`}>{qtty}</p>
                 <div
-                  className={`rectangleCounter ${small && 'small'} ${qtty === 0 && 'disabled'}`}
+                  className={`rectangleCounter ${small ? 'small' : ''} ${qtty === 0 ? 'disabled' : ''}`}
                   onClick={() => onRemove(finalProduct)}
                 >
                   -
@@ -177,7 +179,7 @@ export default class CartElement extends Component {
               </div>
               <div className='images'>
                 <img
-                  className={`itemImage ${small && 'small'}`}
+                  className={`itemImage ${small ? 'small' : ''}`}
                   src={currentImage.toString()}
                   alt='cart item img'
                 />
@@ -185,13 +187,13 @@ export default class CartElement extends Component {
                   images.length > 1 && (
                     <>
                       <img
-                        className={`left ${small && 'hide'}`}
+                        className={`left ${small ? 'hide' : ''}`}
                         src={left.toString()}
                         onClick={() => this.setCurrentImage(currentImageIndex - 1)}
                         alt='left'
                       />
                       <img
-                        className={`right ${small && 'hide'}`}
+                        className={`right ${small ? 'hide' : ''}`}
                         src={right.toString()}
                         onClick={() => this.setCurrentImage(currentImageIndex + 1)}
                         alt='right'

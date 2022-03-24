@@ -1,7 +1,7 @@
 // PLP - product listing page, a.k.a. category page
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchData } from '../api/store';
+import { fetchProductsCategory } from '../api/store';
 import PageProductsList from '../components/PageProductsList';
 import { addProduct } from '../Redux/actions/actions';
 
@@ -14,21 +14,32 @@ class PLP extends Component {
     }
   }
 
+  async fetch() {
+    const { category } = this.props;
+    await fetchProductsCategory(category).then(data => {
+
+      this.setState(prev => ({
+        ...prev,
+        products: data.data.category.products
+      }));
+    })
+  }
+
   async componentDidMount() {
-    const data = (await fetchData()).allProducts;
-    this.setState(prev => ({
-      ...prev,
-      products: data
-    }))
+    this.fetch();
+  }
+
+  async componentDidUpdate(prevProps) {
+    this.props.category !== prevProps.category && this.fetch();
   }
 
   render() {
     const { products } = this.state;
-    const { addProd, currency } = this.props;
+    const { addProd, currency, category } = this.props;
 
     return (
       < PageProductsList
-        title='All'
+        title={category}
         products={products}
         addProd={addProd}
         currency={currency}
